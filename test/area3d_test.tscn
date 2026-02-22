@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c2alsi4irbq5y"]
+
+[sub_resource type="GDScript" id="GDScript_qnb28"]
+script/source = "@tool
+extends Area3D
+
+@export_tool_button(\"Refresh\") var refresh_button = refresh
+
+
+func refresh() -> void:
+	monitoring = false
+	await get_tree().process_frame
+	monitoring = true
+
+
+func _on_body_entered(body: Node3D) -> void:
+	print(\"%s entered\" % body.name)
+
+
+func _on_body_exited(body: Node3D) -> void:
+	print(\"%s exited\" % body.name)
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rutnt"]
+
+[sub_resource type="GDScript" id="GDScript_rutnt"]
+script/source = "@tool
+extends StaticBody3D
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8mtlq"]
+size = Vector3(0.75, 0.785, 0.59)
+
+[node name="Node3D" type="Node3D" unique_id=1596617105]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2131162634]
+script = SubResource("GDScript_qnb28")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1741871417]
+shape = SubResource("BoxShape3D_rutnt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=603384314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66833603, 0, 0)
+script = SubResource("GDScript_rutnt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=431685454]
+shape = SubResource("BoxShape3D_8mtlq")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
