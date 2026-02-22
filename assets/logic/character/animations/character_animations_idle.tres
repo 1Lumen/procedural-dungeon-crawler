@@ -1,0 +1,48 @@
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://ceafofyflgev5"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_wdts6"]
+xfade_time = 0.3
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "idle_2h"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "idle_unarmed"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "idle_bow"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2l0cg"]
+animation = &"character_medium_general_animations/Idle_B"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4qht0"]
+animation = &"character_medium_melee_animations/Melee_2H_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d22t1"]
+animation = &"character_medium_ranged_animations/Ranged_Bow_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_alqt1"]
+animation = &"character_medium_melee_animations/Melee_Unarmed_Idle"
+
+[resource]
+resource_name = "idle_animation"
+graph_offset = Vector2(-393.01672, 181.2039)
+nodes/output/position = Vector2(453.33334, 186.66667)
+nodes/idle/node = SubResource("AnimationNodeAnimation_2l0cg")
+nodes/idle/position = Vector2(-346.66666, -26.666666)
+nodes/idle_2h/node = SubResource("AnimationNodeAnimation_4qht0")
+nodes/idle_2h/position = Vector2(-346.66666, 160)
+nodes/idle_unarmed/node = SubResource("AnimationNodeAnimation_alqt1")
+nodes/idle_unarmed/position = Vector2(-346.66666, 346.66666)
+nodes/idle_bow/node = SubResource("AnimationNodeAnimation_d22t1")
+nodes/idle_bow/position = Vector2(-346.66666, 533.3333)
+nodes/Transition/node = SubResource("AnimationNodeTransition_wdts6")
+nodes/Transition/position = Vector2(192.88074, 180.31108)
+node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"idle", &"Transition", 1, &"idle_2h", &"Transition", 2, &"idle_unarmed", &"Transition", 3, &"idle_bow"]

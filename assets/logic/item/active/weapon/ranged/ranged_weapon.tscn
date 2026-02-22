@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c17kmpaemrxw"]
+
+[ext_resource type="Script" uid="uid://bkt5778smanos" path="res://assets/logic/item/active/weapon/ranged/ranged_weapon.gd" id="2_pxwri"]
+[ext_resource type="Script" uid="uid://bx0j8pde1jl4x" path="res://assets/logic/components/stats/stats_holder.gd" id="2_unuqp"]
+
+[node name="RangedWeapon" type="Node3D" unique_id=211012457]
+script = ExtResource("2_pxwri")
+metadata/_custom_type_script = "uid://dk7p01lnhurso"
+
+[node name="StatsHolder" type="Node" parent="." unique_id=895838853]
+unique_name_in_owner = true
+script = ExtResource("2_unuqp")
+metadata/_custom_type_script = "uid://bx0j8pde1jl4x"

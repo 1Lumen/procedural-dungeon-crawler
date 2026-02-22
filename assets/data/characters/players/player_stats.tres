@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://c8j5nk2tuqt15"]
+
+[ext_resource type="Resource" uid="uid://3bpq8ne4o08r" path="res://assets/data/weapons/melee/swords/sword_basic.tres" id="1_nj1j0"]
+[ext_resource type="Script" uid="uid://bhiw02y634v68" path="res://assets/logic/character/character_stats.gd" id="2_085uy"]
+[ext_resource type="Resource" uid="uid://cebj3ttdm0r32" path="res://assets/data/weapons/ranged/bows/bow.tres" id="3_djg7l"]
+
+[resource]
+script = ExtResource("2_085uy")
+name = "Player"
+model_name = "barbarian"
+model_type = "Medium"
+walk_speed = 5.0
+run_speed = 8.0
+turn_speed = 10.0
+walk_acceleration = 150.0
+walk_deceleration = 150.0
+run_acceleration = 150.0
+run_deceleration = 150.0
+primary_starting_weapon = ExtResource("1_nj1j0")
+secondary_starting_weapon = ExtResource("3_djg7l")
+metadata/_custom_type_script = "uid://bhiw02y634v68"

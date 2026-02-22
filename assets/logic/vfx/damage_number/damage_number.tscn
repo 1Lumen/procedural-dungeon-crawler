@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bd43hf53i56p2"]
+
+[ext_resource type="Script" uid="uid://wjjfa85m160g" path="res://assets/logic/vfx/damage_number/damage_number.gd" id="1_ge7ip"]
+
+[sub_resource type="Curve" id="Curve_gk603"]
+_data = [Vector2(0, 0), 0.0, 0.22819167, 0, 0, Vector2(1, 1), 1.9649798, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_vehf0"]
+_limits = [0.0, 1.2, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.06930693, 1.2), 0.0, 0.0, 0, 0, Vector2(0.12376238, 0.9011674), 0.0, 0.0, 0, 0, Vector2(0.18811882, 0.9945526), 0.0, 0.0, 0, 0, Vector2(0.4851485, 1), 0.0, 0.0, 0, 0, Vector2(0.8811881, 0.9945526), 0.0, 0.0, 0, 0, Vector2(0.940594, 1.0505837), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="Curve" id="Curve_ge7ip"]
+_data = [Vector2(0.6208531, 0), 0.0, 0.33231452, 0, 0, Vector2(0.985782, 0.9688716), 6.568094, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_lm2ub"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.7440759, 0.8910506), 0.9382988, 0.9382988, 0, 0, Vector2(1, 1), 0.24326278, 0.0, 0, 0]
+point_count = 3
+
+[node name="DamageNumber" type="Label3D" unique_id=508622749]
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+font_size = 18
+script = ExtResource("1_ge7ip")
+max_damage_scaling = 10000
+max_font_size = 26
+size_map = SubResource("Curve_gk603")
+min_duration = 0.5
+duration_map = SubResource("Curve_gk603")
+size_curve = SubResource("Curve_vehf0")
+fade_curve = SubResource("Curve_ge7ip")
+displacement_curve = SubResource("Curve_lm2ub")
+displacement_offset = 20.0
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=766642424]
+unique_name_in_owner = true
+wait_time = 1.5
+one_shot = true
+ignore_time_scale = true

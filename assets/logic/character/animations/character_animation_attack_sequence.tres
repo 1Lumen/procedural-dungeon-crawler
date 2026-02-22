@@ -1,0 +1,55 @@
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://bv5jq3dq0wjlr"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3jnx4"]
+animation = &"character_medium_melee_animations/Melee_1H_Attack_Slice_Diagonal"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3xcld"]
+animation = &"character_medium_melee_animations/Melee_1H_Attack_Chop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vjvjy"]
+animation = &"character_medium_melee_animations/Melee_1H_Attack_Stab"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_0gvqw"]
+allow_transition_to_self = true
+input_0/name = "attack_0"
+input_0/auto_advance = true
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "attack_1"
+input_1/auto_advance = true
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "attack_2"
+input_2/auto_advance = true
+input_2/break_loop_at_end = false
+input_2/reset = true
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5ap4s"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_74vvn"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_rsvjp"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_vlibg"]
+
+[resource]
+resource_local_to_scene = true
+graph_offset = Vector2(-1009.3838, -78.83936)
+nodes/output/position = Vector2(453.33334, 213.33333)
+nodes/attack_speed/node = SubResource("AnimationNodeTimeScale_5ap4s")
+nodes/attack_speed/position = Vector2(133.33333, 213.33333)
+nodes/attack_0/node = SubResource("AnimationNodeAnimation_3jnx4")
+nodes/attack_0/position = Vector2(-1066.6666, 53.333332)
+nodes/attack_speed_0/node = SubResource("AnimationNodeTimeScale_74vvn")
+nodes/attack_speed_0/position = Vector2(-426.66666, 26.666666)
+nodes/attack_1/node = SubResource("AnimationNodeAnimation_3xcld")
+nodes/attack_1/position = Vector2(-1066.6666, 346.66666)
+nodes/attack_speed_1/node = SubResource("AnimationNodeTimeScale_rsvjp")
+nodes/attack_speed_1/position = Vector2(-426.66666, 320)
+nodes/attack_2/node = SubResource("AnimationNodeAnimation_vjvjy")
+nodes/attack_2/position = Vector2(-1066.6666, 640)
+nodes/attack_speed_2/node = SubResource("AnimationNodeTimeScale_vlibg")
+nodes/attack_speed_2/position = Vector2(-426.66666, 613.3333)
+nodes/attack_combo/node = SubResource("AnimationNodeTransition_0gvqw")
+nodes/attack_combo/position = Vector2(-133.33333, 240)
+node_connections = [&"output", 0, &"attack_speed", &"attack_speed", 0, &"attack_combo", &"attack_speed_0", 0, &"attack_0", &"attack_speed_1", 0, &"attack_1", &"attack_speed_2", 0, &"attack_2", &"attack_combo", 0, &"attack_speed_0", &"attack_combo", 1, &"attack_speed_1", &"attack_combo", 2, &"attack_speed_2"]

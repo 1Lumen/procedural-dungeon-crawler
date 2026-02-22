@@ -1,0 +1,64 @@
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://dwqt154b14yvl"]
+
+[ext_resource type="AnimationNodeBlendTree" uid="uid://bv5jq3dq0wjlr" path="res://assets/logic/character/animations/character_animation_attack_sequence.tres" id="1_my1bj"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://bs6ghcb3gqldy" path="res://assets/logic/character/animations/character_animations_movement.tres" id="2_y8qg4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y8qg4"]
+advance_mode = 2
+advance_condition = &"primary"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q6oin"]
+advance_mode = 2
+advance_condition = &"secondary"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_at07x"]
+state_machine_type = 1
+states/End/position = Vector2(538.6666, 100.44445)
+states/Primary/node = ExtResource("1_my1bj")
+states/Primary/position = Vector2(363.77777, 21.333338)
+states/Secondary/node = ExtResource("1_my1bj")
+states/Secondary/position = Vector2(363.3333, 180)
+transitions = ["Start", "Primary", SubResource("AnimationNodeStateMachineTransition_y8qg4"), "Start", "Secondary", SubResource("AnimationNodeStateMachineTransition_q6oin")]
+graph_offset = Vector2(-248, -48)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y8qg4"]
+animation = &"character_medium_general_animations/Use_Item"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v5eeu"]
+xfade_time = 0.1
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7542g"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"using"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0026r"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"normal"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s850w"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"normal"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hhwvh"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"attacking"
+
+[resource]
+state_machine_type = 1
+allow_transition_to_self = true
+states/Attack/node = SubResource("AnimationNodeStateMachine_at07x")
+states/Attack/position = Vector2(383.3333, 32.876545)
+states/Move/node = ExtResource("2_y8qg4")
+states/Move/position = Vector2(466.6667, 158.99998)
+states/Start/position = Vector2(297.33334, 160.44441)
+states/Use/node = SubResource("AnimationNodeAnimation_y8qg4")
+states/Use/position = Vector2(556, 33.074074)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_v5eeu"), "Move", "Use", SubResource("AnimationNodeStateMachineTransition_7542g"), "Use", "Move", SubResource("AnimationNodeStateMachineTransition_0026r"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_s850w"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_hhwvh")]
+graph_offset = Vector2(-234, -113)

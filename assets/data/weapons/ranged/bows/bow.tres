@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="RangedWeaponStats" format=3 uid="uid://cebj3ttdm0r32"]
+
+[ext_resource type="Script" uid="uid://bcopnckhhpuqc" path="res://assets/logic/item/active/attack.gd" id="1_6tsbs"]
+[ext_resource type="Script" uid="uid://chejn46hk4scj" path="res://assets/logic/item/active/weapon/ranged/ranged_weapon_stats.gd" id="1_j85hm"]
+[ext_resource type="Script" uid="uid://tp4up0jwd24g" path="res://assets/logic/item/active/weapon/combo.gd" id="2_trdyn"]
+
+[sub_resource type="Resource" id="Resource_vjg8m"]
+script = ExtResource("1_6tsbs")
+animation_name = "Ranged_Bow_Draw"
+animation_duration = 0.5
+metadata/_custom_type_script = "uid://bcopnckhhpuqc"
+
+[sub_resource type="Resource" id="Resource_gg0vq"]
+script = ExtResource("1_6tsbs")
+animation_name = "Ranged_Bow_Release"
+animation_duration = 0.5
+damage = 15
+metadata/_custom_type_script = "uid://bcopnckhhpuqc"
+
+[sub_resource type="Resource" id="Resource_6tsbs"]
+script = ExtResource("1_6tsbs")
+animation_name = "Ranged_Bow_Draw"
+metadata/_custom_type_script = "uid://bcopnckhhpuqc"
+
+[sub_resource type="Resource" id="Resource_trdyn"]
+script = ExtResource("1_6tsbs")
+animation_name = "Ranged_Bow_Draw"
+metadata/_custom_type_script = "uid://bcopnckhhpuqc"
+
+[sub_resource type="Resource" id="Resource_8mqvs"]
+script = ExtResource("2_trdyn")
+attacks = Array[ExtResource("1_6tsbs")]([SubResource("Resource_vjg8m"), SubResource("Resource_gg0vq"), SubResource("Resource_6tsbs"), SubResource("Resource_trdyn")])
+metadata/_custom_type_script = "uid://tp4up0jwd24g"
+
+[resource]
+script = ExtResource("1_j85hm")
+type = 1
+combo = SubResource("Resource_8mqvs")
+name = "Bow"
+model_name = "bow"
+scene_name = "ranged_weapon"
+metadata/_custom_type_script = "uid://chejn46hk4scj"

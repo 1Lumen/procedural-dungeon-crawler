@@ -1,0 +1,47 @@
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://b7mu3p86sffpw"]
+
+[ext_resource type="AnimationNodeStateMachine" uid="uid://dwqt154b14yvl" path="res://assets/logic/character/animations/character_animations_action.tres" id="1_lrssh"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_by0ya"]
+filter_enabled = true
+filters = ["%GeneralSkeleton:Chest", "%GeneralSkeleton:Head", "%GeneralSkeleton:Hips", "%GeneralSkeleton:LeftHand", "%GeneralSkeleton:RightHand", "%GeneralSkeleton:Spine", "%GeneralSkeleton:hand.l", "%GeneralSkeleton:hand.r", "%GeneralSkeleton:handslot.l", "%GeneralSkeleton:handslot.r", "%GeneralSkeleton:lowerarm.l", "%GeneralSkeleton:lowerarm.r", "%GeneralSkeleton:upperarm.l", "%GeneralSkeleton:upperarm.r"]
+fadein_time = 0.1
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x6pio"]
+animation = &"character_medium_general_animations/Hit_B"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bcfx5"]
+animation = &"character_medium_general_animations/Hit_A"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_l8luo"]
+input_0/name = "hit_light"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "hit_heavy"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8t57o"]
+graph_offset = Vector2(-590.92645, -26.750814)
+nodes/output/position = Vector2(240, 160)
+nodes/hit_strength/node = SubResource("AnimationNodeTransition_l8luo")
+nodes/hit_strength/position = Vector2(53.333332, 106.666664)
+nodes/hit_light/node = SubResource("AnimationNodeAnimation_bcfx5")
+nodes/hit_light/position = Vector2(-346.66666, 80)
+nodes/hit_heavy/node = SubResource("AnimationNodeAnimation_x6pio")
+nodes/hit_heavy/position = Vector2(-346.66666, 240)
+node_connections = [&"output", 0, &"hit_strength", &"hit_strength", 0, &"hit_light", &"hit_strength", 1, &"hit_heavy"]
+
+[resource]
+graph_offset = Vector2(-1649.9619, -544.3042)
+nodes/output/position = Vector2(-453.33334, -346.66666)
+nodes/hit/node = SubResource("AnimationNodeOneShot_by0ya")
+nodes/hit/position = Vector2(-640, -400)
+nodes/hit_tree/node = SubResource("AnimationNodeBlendTree_8t57o")
+nodes/hit_tree/position = Vector2(-826.6667, -266.66666)
+nodes/Action/node = ExtResource("1_lrssh")
+nodes/Action/position = Vector2(-1120, -560)
+node_connections = [&"output", 0, &"hit", &"hit", 0, &"Action", &"hit", 1, &"hit_tree"]

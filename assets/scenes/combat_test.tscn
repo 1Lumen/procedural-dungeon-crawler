@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bfj7lu6tc473s"]
+
+[ext_resource type="PackedScene" uid="uid://b14qlo73yijiw" path="res://assets/logic/cursor/cursor.tscn" id="1_5xnpw"]
+[ext_resource type="Script" uid="uid://cfhoefn20qwf4" path="res://assets/logic/cursor/marker.gd" id="2_gyf67"]
+[ext_resource type="PackedScene" uid="uid://l1as1haan628" path="res://assets/logic/character/player/player.tscn" id="3_vsww7"]
+[ext_resource type="PackedScene" uid="uid://d4l5nf0d4rbsd" path="res://assets/logic/character/enemy/enemy.tscn" id="4_3hi7r"]
+[ext_resource type="Resource" uid="uid://bl0n2l5vgmaww" path="res://assets/data/characters/enemies/skeleton_warrior.tres" id="5_tlgk6"]
+[ext_resource type="PackedScene" uid="uid://con6nar65soc" path="res://assets/logic/item/active/weapon/melee/melee_weapon.tscn" id="6_tlgk6"]
+[ext_resource type="Resource" uid="uid://3bpq8ne4o08r" path="res://assets/data/weapons/melee/swords/sword_basic.tres" id="7_a3urr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ir0yo"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_npp6d"]
+sky_material = SubResource("ProceduralSkyMaterial_ir0yo")
+
+[sub_resource type="Environment" id="Environment_xaxto"]
+background_mode = 2
+sky = SubResource("Sky_npp6d")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhg1a"]
+albedo_color = Color(0.83, 0.21579999, 0.2260365, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_3hi7r"]
+material = SubResource("StandardMaterial3D_qhg1a")
+inner_radius = 0.134
+outer_radius = 0.268
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_npp6d"]
+vertices = PackedVector3Array(-49.5, 0.02, -49.5, -49.5, 0.02, 49.5, 49.5, 0.02, 49.5, 49.5, 0.02, -49.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_collision_mask = 1
+cell_height = 0.01
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ir0yo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npp6d"]
+albedo_color = Color(0.22972247, 0.39770487, 0.21130136, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xaxto"]
+material = SubResource("StandardMaterial3D_npp6d")
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a3urr"]
+size = Vector3(10.99292, 3.3461914, 11.372498)
+
+[node name="CombatTest" type="Node3D" unique_id=735376162]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1812308251]
+environment = SubResource("Environment_xaxto")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1947129964]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=298729409]
+transform = Transform3D(1, 0, 0, 0, 0.5150381, 0.8571673, 0, -0.8571673, 0.5150381, 0, 26.582, 15.786)
+fov = 37.4
+
+[node name="Cursor" parent="." unique_id=945021909 instance=ExtResource("1_5xnpw")]
+
+[node name="Marker" type="MeshInstance3D" parent="." unique_id=1308809966]
+mesh = SubResource("TorusMesh_3hi7r")
+script = ExtResource("2_gyf67")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1420901990]
+navigation_mesh = SubResource("NavigationMesh_npp6d")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D" unique_id=67960165]
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor" unique_id=1394413384]
+visible = false
+shape = SubResource("WorldBoundaryShape3D_ir0yo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor" unique_id=137917369]
+mesh = SubResource("PlaneMesh_xaxto")
+
+[node name="Player" parent="." unique_id=482223014 instance=ExtResource("3_vsww7")]
+
+[node name="Enemy" parent="." unique_id=746901630 instance=ExtResource("4_3hi7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.480578, -1.9073486e-06, -1.5434875)
+stats = ExtResource("5_tlgk6")
+
+[node name="MeleeWeapon" parent="." unique_id=1350912844 instance=ExtResource("6_tlgk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.904851, 0)
+
+[node name="Hurtbox" parent="MeleeWeapon" index="0" unique_id=799607971]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" parent="MeleeWeapon/Hurtbox" index="0" unique_id=997013385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8465576, -0.19946289, -0.48617554)
+shape = SubResource("BoxShape3D_a3urr")
+
+[node name="StatsHolder" parent="MeleeWeapon" index="1" unique_id=895838853]
+base_stats = ExtResource("7_a3urr")
+
+[editable path="MeleeWeapon"]

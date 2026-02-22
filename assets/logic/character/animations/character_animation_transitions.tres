@@ -1,0 +1,162 @@
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://bhttdega6hbcu"]
+
+[ext_resource type="AnimationNodeBlendTree" uid="uid://bv5jq3dq0wjlr" path="res://assets/logic/character/animations/character_animation_attack_sequence.tres" id="1_lebgg"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b32gl"]
+animation = &"character_medium_general_animations/Use_Item"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m658i"]
+animation = &"character_medium_movement_basic_animations/Running_A"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_peah7"]
+fadein_time = 0.1
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xcg0l"]
+graph_offset = Vector2(-767.0734, -186.30028)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_peah7")
+nodes/OneShot/position = Vector2(-26.666666, 53.333332)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_m658i")
+nodes/Animation/position = Vector2(-666.6667, 0)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_b32gl")
+"nodes/Animation 2/position" = Vector2(-613.3333, 186.66667)
+node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3xcld"]
+animation = &"character_medium_ranged_animations/Ranged_Bow_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rsvjp"]
+animation = &"character_medium_melee_animations/Melee_Unarmed_Idle"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_vlibg"]
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "idle_2h_melee"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = true
+input_2/name = "idle_bow"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = true
+input_3/name = "idle_unarmed"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5ap4s"]
+animation = &"character_medium_general_animations/Idle_B"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yks4h"]
+animation = &"character_medium_melee_animations/Melee_2H_Idle"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a0dxw"]
+graph_offset = Vector2(-940.643, 301.52512)
+nodes/output/position = Vector2(160, 800)
+nodes/idle/node = SubResource("AnimationNodeAnimation_5ap4s")
+nodes/idle/position = Vector2(-666.6667, 586.6667)
+nodes/Transition/node = SubResource("AnimationNodeTransition_vlibg")
+nodes/Transition/position = Vector2(-106.666664, 800)
+nodes/idle_2h/node = SubResource("AnimationNodeAnimation_yks4h")
+nodes/idle_2h/position = Vector2(-720, 773.3333)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_rsvjp")
+nodes/Animation/position = Vector2(-746.6667, 1173.3334)
+"nodes/Animation 2state_3/node" = SubResource("AnimationNodeAnimation_3xcld")
+"nodes/Animation 2state_3/position" = Vector2(-746.6667, 986.6667)
+node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"idle", &"Transition", 1, &"idle_2h", &"Transition", 2, &"Animation 2state_3", &"Transition", 3, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lebgg"]
+animation = &"character_medium_general_animations/Use_Item"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m658i"]
+advance_mode = 2
+advance_condition = &"use"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xcg0l"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b32gl"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_peah7"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_m3lxu"]
+states/Attack/node = ExtResource("1_lebgg")
+states/Attack/position = Vector2(355.48145, 33.33333)
+states/End/position = Vector2(505.33334, 101.03703)
+states/Use/node = SubResource("AnimationNodeAnimation_lebgg")
+states/Use/position = Vector2(354.44443, 172)
+transitions = ["Start", "Use", SubResource("AnimationNodeStateMachineTransition_m658i"), "Use", "End", SubResource("AnimationNodeStateMachineTransition_xcg0l"), "Start", "Attack", SubResource("AnimationNodeStateMachineTransition_b32gl"), "Attack", "End", SubResource("AnimationNodeStateMachineTransition_peah7")]
+graph_offset = Vector2(-380, -118)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3jnx4"]
+animation = &"character_medium_movement_basic_animations/Running_B"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vjvjy"]
+animation = &"character_medium_movement_advanced_animations/Walking_Backwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ilcmo"]
+animation = &"character_medium_movement_advanced_animations/Running_Strafe_Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_74vvn"]
+animation = &"character_medium_movement_advanced_animations/Running_Strafe_Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2g4on"]
+animation = &"character_medium_general_animations/Idle_B"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3jnx4"]
+auto_triangles = false
+blend_point_0/node = SubResource("AnimationNodeAnimation_3jnx4")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_vjvjy")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ilcmo")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_74vvn")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_2g4on")
+blend_point_4/pos = Vector2(0, 0)
+triangles = PackedInt32Array(1, 3, 4, 0, 3, 4, 0, 2, 4, 1, 2, 4)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3r4ed"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4v2cb"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "velocity.length > .2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7q27o"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "velocity.length < .2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vhy3s"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lebgg"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m3lxu"]
+advance_mode = 2
+advance_condition = &"use"
+
+[resource]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_xcg0l")
+states/BlendTree/position = Vector2(644, 192.22226)
+states/Idle/node = SubResource("AnimationNodeBlendTree_a0dxw")
+states/Idle/position = Vector2(380, 191.33334)
+states/Use/node = SubResource("AnimationNodeStateMachine_m3lxu")
+states/Use/position = Vector2(542.6667, 26.740736)
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_3jnx4")
+states/Walk/position = Vector2(380, 27.333328)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_3r4ed"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_4v2cb"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_7q27o"), "Walk", "Use", SubResource("AnimationNodeStateMachineTransition_vhy3s"), "Use", "Walk", SubResource("AnimationNodeStateMachineTransition_lebgg"), "Idle", "Use", SubResource("AnimationNodeStateMachineTransition_m3lxu")]
+graph_offset = Vector2(-186, -138)

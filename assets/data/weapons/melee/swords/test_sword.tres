@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MeleeWeaponStats" format=3 uid="uid://ulrgq8iies64"]
+
+[ext_resource type="Script" uid="uid://ddurwsf4y05m5" path="res://assets/logic/item/active/weapon/melee/melee_weapon_stats.gd" id="1_0s2h4"]
+[ext_resource type="Script" uid="uid://bcopnckhhpuqc" path="res://assets/logic/item/active/attack.gd" id="1_7sne7"]
+[ext_resource type="Script" uid="uid://tp4up0jwd24g" path="res://assets/logic/item/active/weapon/combo.gd" id="2_yk64d"]
+
+[sub_resource type="Resource" id="Resource_oxl0r"]
+script = ExtResource("1_7sne7")
+animation_duration = 1.0
+damage = 13
+metadata/_custom_type_script = "uid://bcopnckhhpuqc"
+
+[sub_resource type="Resource" id="Resource_u77mv"]
+script = ExtResource("2_yk64d")
+attacks = Array[ExtResource("1_7sne7")]([SubResource("Resource_oxl0r"), null])
+metadata/_custom_type_script = "uid://tp4up0jwd24g"
+
+[resource]
+script = ExtResource("1_0s2h4")
+combo = SubResource("Resource_u77mv")
+metadata/_custom_type_script = "uid://ddurwsf4y05m5"

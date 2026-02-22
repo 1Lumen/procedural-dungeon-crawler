@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://c2w5nbmn8itb7"]
+
+[ext_resource type="Script" uid="uid://bcopnckhhpuqc" path="res://assets/logic/item/active/attack.gd" id="1_4oh58"]
+[ext_resource type="Script" uid="uid://tp4up0jwd24g" path="res://assets/logic/item/active/weapon/combo.gd" id="1_804dh"]
+[ext_resource type="Script" uid="uid://cvmm7kgyq31s7" path="res://assets/logic/item/active/weapon/weapon_stats.gd" id="2_4oh58"]
+
+[sub_resource type="Resource" id="Resource_4oh58"]
+script = ExtResource("1_4oh58")
+animation_name = "Melee_1H_Attack_Chop"
+animation_duration = 1.0
+damage = 10
+metadata/_custom_type_script = "uid://bcopnckhhpuqc"
+
+[sub_resource type="Resource" id="Resource_jpr8m"]
+script = ExtResource("1_804dh")
+attacks = Array[ExtResource("1_4oh58")]([SubResource("Resource_4oh58")])
+metadata/_custom_type_script = "uid://tp4up0jwd24g"
+
+[resource]
+script = ExtResource("2_4oh58")
+combo = SubResource("Resource_jpr8m")
+name = "Rustic Blade"
+model_name = "sword_skeleton"
+scene_name = "sword"
+metadata/_custom_type_script = "uid://cvmm7kgyq31s7"
