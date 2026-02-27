@@ -6,20 +6,14 @@ extends Node
 ## It handles taking damage and dying.
 
 signal damaged(remaining_health: int)
-signal died
+signal health_depleted
 
 @export var can_take_damage := true
 
 var stats: Stats
 
-
-func _ready() -> void:
-	await get_tree().process_frame
-	stats = get_node_or_null("../StatsHolder").stats
-	
-	stats.health = stats.max_health
-	
-	died.connect(_on_death)
+# TODO: Set stats when stat holder signal is emitted.
+# TODO: Fix taking damage.
 
 
 func damage(amount: int):
@@ -30,12 +24,9 @@ func damage(amount: int):
 	damaged.emit(stats.health)
 	
 	if stats.health <= 0:
-		died.emit()
-
-
-func _on_death():
-	get_parent().queue_free()
+		health_depleted.emit()
 
 
 func _on_hitbox_hit(hit: Hit) -> void:
-	damage(hit.attacker.stats.attack.damage)
+	#damage(hit.attacker.stats.attack.damage)
+	pass

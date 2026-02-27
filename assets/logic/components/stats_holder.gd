@@ -12,6 +12,5 @@ var stats: Stats:
 
 
 func _ready() -> void:
-	# Might need to be changed to duplicate deep in the future if stats using data structures are used.
 	if base_stats and not stats:
 		stats = base_stats

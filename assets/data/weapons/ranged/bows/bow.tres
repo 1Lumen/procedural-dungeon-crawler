@@ -17,25 +17,16 @@ animation_duration = 0.5
 damage = 15
 metadata/_custom_type_script = "uid://bcopnckhhpuqc"
 
-[sub_resource type="Resource" id="Resource_6tsbs"]
-script = ExtResource("1_6tsbs")
-animation_name = "Ranged_Bow_Draw"
-metadata/_custom_type_script = "uid://bcopnckhhpuqc"
-
-[sub_resource type="Resource" id="Resource_trdyn"]
-script = ExtResource("1_6tsbs")
-animation_name = "Ranged_Bow_Draw"
-metadata/_custom_type_script = "uid://bcopnckhhpuqc"
-
 [sub_resource type="Resource" id="Resource_8mqvs"]
 script = ExtResource("2_trdyn")
-attacks = Array[ExtResource("1_6tsbs")]([SubResource("Resource_vjg8m"), SubResource("Resource_gg0vq"), SubResource("Resource_6tsbs"), SubResource("Resource_trdyn")])
+attacks = Array[ExtResource("1_6tsbs")]([SubResource("Resource_vjg8m"), SubResource("Resource_gg0vq")])
 metadata/_custom_type_script = "uid://tp4up0jwd24g"
 
 [resource]
 script = ExtResource("1_j85hm")
 type = 1
 combo = SubResource("Resource_8mqvs")
+range = 10.0
 name = "Bow"
 model_name = "bow"
 scene_name = "ranged_weapon"

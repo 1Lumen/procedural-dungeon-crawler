@@ -27,8 +27,8 @@ class Models:
 
 class Scenes:
 	static var weapons: Dictionary[String, PackedScene] = {
-		"sword": load("uid://kpcum04qgocn"), # Cyclic dependency when using preload. Can't resolve class Weapon.
-		"ranged_weapon": load("uid://c17kmpaemrxw"),
+		"sword": load("uid://cgupylvsamwsm"), # Cyclic dependency when using preload. Can't resolve class Weapon.
+		"ranged_weapon": load("uid://bga5w3o0j4l2o"),
 	}
 	static var armor: Dictionary[String, PackedScene] = {
 	}

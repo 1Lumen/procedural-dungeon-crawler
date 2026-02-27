@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b14qlo73yijiw"]
 
-[ext_resource type="Script" uid="uid://ctvgigoxul6qn" path="res://assets/logic/cursor/cursor.gd" id="1_pqji5"]
+[ext_resource type="Script" uid="uid://ctvgigoxul6qn" path="res://assets/logic/character/player/cursor/cursor.gd" id="1_pqji5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrbk0"]
 render_priority = 1

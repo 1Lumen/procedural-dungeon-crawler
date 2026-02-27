@@ -11,15 +11,13 @@ radius = 20.0
 collision_layer = 4
 collision_mask = 7
 
-[node name="PrimaryAttackRange" parent="." index="6" unique_id=1909335633]
-monitorable = false
-
 [node name="EnemyAI" type="Node" parent="." index="7" unique_id=1384838292]
 script = ExtResource("3_uxdnr")
 metadata/_custom_type_script = "uid://chowysdy0fd7a"
 
-[node name="SecondaryAttackRange" parent="." index="8" unique_id=978955754]
-monitorable = false
+[node name="Hitbox" parent="." index="8" unique_id=549987143]
+collision_layer = 4
+collision_mask = 2
 
 [node name="DetectionRange" type="Area3D" parent="." index="9" unique_id=1404548178]
 monitorable = false
@@ -28,6 +26,12 @@ script = ExtResource("4_8kb62")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange" index="0" unique_id=1229362954]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_uxdnr")
+
+[node name="PrimaryAttackRange" parent="." index="10" unique_id=1909335633]
+monitorable = false
+
+[node name="SecondaryAttackRange" parent="." index="11" unique_id=978955754]
+monitorable = false
 
 [connection signal="target_position_changed" from="EnemyAI" to="CharacterNavigator" method="set_navigation_position"]
 [connection signal="body_entered" from="DetectionRange" to="EnemyAI" method="_on_detection_range_entered"]

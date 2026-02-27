@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c17kmpaemrxw"]
+
+[ext_resource type="Script" uid="uid://bx0j8pde1jl4x" path="res://assets/logic/components/stats_holder.gd" id="2_unuqp"]
+
+[node name="Weapon" type="Node3D" unique_id=2104277733]
+
+[node name="StatsHolder" type="Node" parent="." unique_id=895838853]
+unique_name_in_owner = true
+script = ExtResource("2_unuqp")
+metadata/_custom_type_script = "uid://bx0j8pde1jl4x"
+
+[node name="ComboTimer" type="Timer" parent="." unique_id=135580363]
+unique_name_in_owner = true
+wait_time = 1.5
+one_shot = true

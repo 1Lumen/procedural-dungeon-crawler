@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cngjas4481rem"]
 
 [ext_resource type="Script" uid="uid://b7wldffrl36xy" path="res://assets/logic/character/character.gd" id="1_frpoq"]
-[ext_resource type="Script" uid="uid://bx0j8pde1jl4x" path="res://assets/logic/components/stats/stats_holder.gd" id="2_0slxe"]
+[ext_resource type="Script" uid="uid://bx0j8pde1jl4x" path="res://assets/logic/components/stats_holder.gd" id="2_0slxe"]
 [ext_resource type="Script" uid="uid://c5jqp5e07xlhs" path="res://assets/logic/components/state_machine/hfsm.gd" id="2_337gc"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cuc2k0pqakmsq" path="res://assets/logic/character/animations/character_animation_states.tres" id="2_frpoq"]
 [ext_resource type="Script" uid="uid://ddqqk8vijv07t" path="res://assets/logic/character/animations/character_animation_tree.gd" id="2_plvkx"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://qt8fiu2owxhy" path="res://assets/logic/character/states/attack_state.gd" id="6_5sd1g"]
 [ext_resource type="Script" uid="uid://ceyyo34r7rtd8" path="res://assets/logic/components/attack_behaviour.gd" id="6_frpoq"]
 [ext_resource type="Script" uid="uid://egc8jwdrsosw" path="res://assets/logic/character/states/use_state.gd" id="7_rn65u"]
+[ext_resource type="Script" uid="uid://cjbd5j57o50wl" path="res://assets/logic/components/health.gd" id="14_5sd1g"]
+[ext_resource type="Script" uid="uid://b5b530vy0d4dq" path="res://assets/logic/components/hitbox.gd" id="15_rn65u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h6syq"]
 radius = 0.5058594
@@ -126,6 +128,20 @@ metadata/_custom_type_script = "uid://bx0j8pde1jl4x"
 script = ExtResource("6_frpoq")
 metadata/_custom_type_script = "uid://ceyyo34r7rtd8"
 
+[node name="Health" type="Node" parent="." unique_id=1783642186]
+script = ExtResource("14_5sd1g")
+metadata/_custom_type_script = "uid://cjbd5j57o50wl"
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=549987143]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("15_rn65u")
+metadata/_custom_type_script = "uid://b5b530vy0d4dq"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1617930987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1889653, 0)
+shape = SubResource("CapsuleShape3D_h6syq")
+
 [node name="PrimaryAttackRange" type="Area3D" parent="." unique_id=1909335633]
 unique_name_in_owner = true
 
@@ -139,3 +155,5 @@ unique_name_in_owner = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SecondaryAttackRange" unique_id=2128597314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_plvkx")
+
+[connection signal="hit" from="Hitbox" to="Health" method="_on_hitbox_hit"]

@@ -1,22 +1,18 @@
 [gd_scene format=3 uid="uid://con6nar65soc"]
 
+[ext_resource type="PackedScene" uid="uid://c17kmpaemrxw" path="res://assets/logic/item/active/weapon/weapon.tscn" id="1_heiyp"]
 [ext_resource type="Script" uid="uid://d02p5pd1047w5" path="res://assets/logic/components/hurtbox.gd" id="2_bhtrk"]
 [ext_resource type="Script" uid="uid://c3d53i1182dnu" path="res://assets/logic/item/active/weapon/melee/melee_weapon.gd" id="2_heiyp"]
-[ext_resource type="Script" uid="uid://bx0j8pde1jl4x" path="res://assets/logic/components/stats/stats_holder.gd" id="3_heiyp"]
 
-[node name="MeleeWeapon" type="Node3D" unique_id=759668617]
+[node name="MeleeWeapon" unique_id=2104277733 instance=ExtResource("1_heiyp")]
 script = ExtResource("2_heiyp")
-metadata/_custom_type_script = "uid://dk7p01lnhurso"
 
-[node name="Hurtbox" type="Area3D" parent="." unique_id=799607971 node_paths=PackedStringArray("stats_holder")]
+[node name="Hurtbox" type="Area3D" parent="." index="1" unique_id=14290484 node_paths=PackedStringArray("stats_holder")]
 unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("2_bhtrk")
 stats_holder = NodePath("../StatsHolder")
 metadata/_custom_type_script = "uid://d02p5pd1047w5"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=997013385]
-
-[node name="StatsHolder" type="Node" parent="." unique_id=895838853]
-unique_name_in_owner = true
-script = ExtResource("3_heiyp")
-metadata/_custom_type_script = "uid://bx0j8pde1jl4x"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0" unique_id=66660824]

@@ -43,7 +43,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action_pressed("mouse_click"):
+	# TODO: Handle all input in centralized player input manager and emit signals to transfer input to other components.
+	if not event.is_action_pressed("mouse_click") or Input.is_action_pressed("attack_mode"):
 		return
 	
 	if mode == Mode.NAVIGATE:

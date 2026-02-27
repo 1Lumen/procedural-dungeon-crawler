@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://c8j5nk2tuqt15" path="res://assets/data/characters/players/player_stats.tres" id="2_gyegr"]
 [ext_resource type="Script" uid="uid://lunllofpndj0" path="res://assets/logic/character/player/player_input.gd" id="3_bq6hj"]
 [ext_resource type="Script" uid="uid://d2mjdjw561p0f" path="res://assets/logic/character/player/player_controller.gd" id="4_q06j5"]
+[ext_resource type="PackedScene" uid="uid://b14qlo73yijiw" path="res://assets/logic/character/player/cursor/cursor.tscn" id="5_y62k1"]
 
 [node name="Player" unique_id=2006541942 groups=["Player"] instance=ExtResource("1_j2pfq")]
 stats = ExtResource("2_gyegr")
@@ -19,6 +20,9 @@ metadata/_custom_type_script = "uid://lunllofpndj0"
 [node name="PlayerController" type="Node" parent="." index="6" unique_id=1733292596]
 script = ExtResource("4_q06j5")
 metadata/_custom_type_script = "uid://d2mjdjw561p0f"
+
+[node name="Cursor" parent="." index="10" unique_id=1651631282 instance=ExtResource("5_y62k1")]
+top_level = true
 
 [connection signal="stats_changed" from="StatsHolder" to="CharacterNavigator" method="set_stats"]
 [connection signal="attack_primary_pressed" from="PlayerInput" to="AttackBehaviour" method="start_primary_attack"]
