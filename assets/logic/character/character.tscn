@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bpp8vf8m7u2gd" path="res://assets/logic/character/states/move_state.gd" id="5_w0xch"]
 [ext_resource type="Script" uid="uid://qt8fiu2owxhy" path="res://assets/logic/character/states/attack_state.gd" id="6_5sd1g"]
 [ext_resource type="Script" uid="uid://ceyyo34r7rtd8" path="res://assets/logic/components/attack_behaviour.gd" id="6_frpoq"]
+[ext_resource type="Script" uid="uid://c13bftaxd30xr" path="res://assets/logic/components/state_machine/transition.gd" id="7_g8vfh"]
 [ext_resource type="Script" uid="uid://egc8jwdrsosw" path="res://assets/logic/character/states/use_state.gd" id="7_rn65u"]
 [ext_resource type="Script" uid="uid://cjbd5j57o50wl" path="res://assets/logic/components/health.gd" id="14_5sd1g"]
 [ext_resource type="Script" uid="uid://b5b530vy0d4dq" path="res://assets/logic/components/hitbox.gd" id="15_rn65u"]
@@ -54,6 +55,11 @@ metadata/_custom_type_script = "uid://bpp8vf8m7u2gd"
 [node name="AttackState" type="Node" parent="HFSM/AliveState" unique_id=1211397348]
 script = ExtResource("6_5sd1g")
 metadata/_custom_type_script = "uid://qt8fiu2owxhy"
+
+[node name="Transition" type="Node" parent="HFSM/AliveState/AttackState" unique_id=1744047177 node_paths=PackedStringArray("new_state")]
+script = ExtResource("7_g8vfh")
+new_state = NodePath("../../MoveState")
+metadata/_custom_type_script = "uid://c13bftaxd30xr"
 
 [node name="UseState" type="Node" parent="HFSM/AliveState" unique_id=1085866881]
 script = ExtResource("7_rn65u")

@@ -3,8 +3,6 @@ extends State
 ## A Hierarchical Finite State Machine (HFSM) using its children as states.
 ##
 ## The HSM is a state itself and can be a state of a parent HFSM.
-# TODO: Support for state transition durations and maybe transition animations.
-# Add export array of states it can transition to so there is no need for checks whether or not it can transition to another state.
 
 signal state_changed(old_state: State, new_state: State)
 
@@ -14,9 +12,10 @@ signal state_changed(old_state: State, new_state: State)
 @export var reset_state_on_enter := true
 ## When [code]true[/code], cycles to the next state in this HFSM if the last state did not include a new state to transition to.
 @export var advance_to_next_state := true
+## Allows the state to transition to itself, so to exit and enter again. 
+@export var allow_transition_to_self := false
 @export var debug_state_change := false
 
-var states: Dictionary[String, State]
 var current_state: State
 var previous_state: State
 var is_root := false
@@ -66,7 +65,7 @@ func _internal_init(character: Character):
 		_init_states()
 	
 	if is_root:
-		set_state(initial_state.name.to_snake_case().remove_chars("_state"))
+		set_state(initial_state)
 	
 	init()
 
@@ -75,7 +74,7 @@ func _internal_init(character: Character):
 ## Only used internally, do not override.
 func _enter(...args):
 	if not is_leaf and ((not is_root and current_state == null) or reset_state_on_enter):
-		set_state(initial_state.name.to_snake_case())
+		set_state(initial_state)
 	
 	enter.callv(args)
 
@@ -154,10 +153,7 @@ func _init_states():
 		if child is not State:
 			push_warning("Node %s is not a state" % child.name)
 			continue
-		
 		var state = child as State
-		var state_name = state.name.to_snake_case().remove_chars("_state")
-		states[state_name] = state
 		
 		# Disable engine processing, only allow custom processing by the HFSM.
 		state.process_mode = Node.PROCESS_MODE_DISABLED
@@ -170,13 +166,12 @@ func _init_states():
 
 
 ## Transitions the current state to the given new one.
-func set_state(state_name: String, ...args):
+func set_state(new_state: State, ...args):
 	if is_leaf:
 		push_error("Tried to set state on a leaf state!")
 		return
 	
 	var old_state = current_state
-	var new_state = states.get(state_name)
 	
 	if not new_state:
 		if advance_to_next_state:
@@ -184,10 +179,10 @@ func set_state(state_name: String, ...args):
 		else:
 			printerr("State %s is not a valid state in this state machine. \
 					If you indendet to cycle to the next state, check on \"advance_to_next_state\" \
-					on HFSM %s." % [state_name, name])
+					on HFSM %s." % [new_state.name, name])
 			return
 	
-	if new_state == old_state:
+	if new_state == old_state and not new_state.allow_transition_to_self:
 		return
 	
 	if old_state:
