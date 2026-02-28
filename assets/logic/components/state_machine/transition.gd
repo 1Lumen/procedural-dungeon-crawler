@@ -16,11 +16,12 @@ func _ready() -> void:
 
 
 func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: PackedStringArray = []
 	if not new_state:
-		return ["Needs a new state to transition to"]
+		warnings.append("Needs a new state to transition to")
 	if not state_machine:
-		return ["Parent state needs to be child of a HFSM"]
-	return []
+		warnings.append("Parent state needs to be child of a HFSM")
+	return warnings
 
 
 func transition() -> void:

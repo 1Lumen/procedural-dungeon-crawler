@@ -5,6 +5,15 @@ extends Resource
 
 ## The power level of the item or character. Many stats scale with it.
 @export var power: int = 1
+@export var stats: Array[Stat]
+
+
+func get_stat(type: Stat.Type) -> float:
+	for stat in stats:
+		if stat.type == type:
+			return stat.value
+	push_warning("No stat of type %s found" % [str(type)])
+	return 0
 
 
 # TODO: Find right scaling function.

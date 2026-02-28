@@ -25,10 +25,10 @@ var parent: HFSM
 
 func _ready() -> void:
 	# Checks if the HFSM is a leaf.
-	if get_child_count():
-		var first_child = get_child(0)
-		is_leaf = not (first_child and first_child is State)
-		assert(not is_leaf and initial_state, "No initial state set on HFSM!")
+	for child in get_children():
+		if child is State:
+			is_leaf = false
+	assert(not is_leaf and initial_state, "No initial state set on HFSM!")
 	
 	# The HFSM is the root HFSM.
 	var parent_node = get_parent()

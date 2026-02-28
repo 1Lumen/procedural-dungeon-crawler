@@ -1,6 +1,10 @@
 @abstract
 class_name StatusEffect
 extends Resource
+# TODO: Make RefCounted?
+
+## Emitted when the status effect expires.
+signal expired
 
 @export_custom(PROPERTY_HINT_NONE, "suffix:s") var duration: float
 
@@ -15,12 +19,17 @@ func update(delta: float):
 	tick(delta)
 	elapsed_time += delta
 	if elapsed_time >= duration:
-		expire()
-		# TODO: Call remove (maybe another function of StatusEffect).
+		_expire()
+
+
+func _expire() -> void:
+	expired.emit()
+	expire()
 
 
 ## Updates the effect. Called once per frame.
 @abstract func tick(delta: float)
+
 
 ## Called when the status effect expires.
 @abstract func expire()
