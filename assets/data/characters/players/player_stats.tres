@@ -3,19 +3,110 @@
 [ext_resource type="Resource" uid="uid://3bpq8ne4o08r" path="res://assets/data/weapons/melee/swords/sword_basic.tres" id="1_nj1j0"]
 [ext_resource type="Script" uid="uid://bhiw02y634v68" path="res://assets/logic/character/character_stats.gd" id="2_085uy"]
 [ext_resource type="Resource" uid="uid://cebj3ttdm0r32" path="res://assets/data/weapons/ranged/bows/bow.tres" id="3_djg7l"]
+[ext_resource type="Script" uid="uid://dye5b8kxq07lb" path="res://addons/own/stats_system/stats/stat.gd" id="4_085uy"]
+
+[sub_resource type="Resource" id="Resource_085uy"]
+script = ExtResource("4_085uy")
+value = 10.0
+precision = 0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_djg7l"]
+script = ExtResource("4_085uy")
+value = 15.0
+precision = 0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_yy0ma"]
+script = ExtResource("4_085uy")
+value = 10.0
+precision = 0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_a0ojc"]
+script = ExtResource("4_085uy")
+value = 50.0
+precision = 0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_xqnh1"]
+script = ExtResource("4_085uy")
+value = 50.0
+precision = 0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_kf40b"]
+script = ExtResource("4_085uy")
+value = 75.0
+precision = 0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_ejtf2"]
+script = ExtResource("4_085uy")
+value = 75.0
+precision = 0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_e30pu"]
+script = ExtResource("4_085uy")
+value = 0.3
+precision = 0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_xqo2r"]
+script = ExtResource("4_085uy")
+value = 1.0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_q334o"]
+script = ExtResource("4_085uy")
+value = 100.0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_66eqq"]
+script = ExtResource("4_085uy")
+value = 100.0
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_yy0ty"]
+script = ExtResource("4_085uy")
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_yur5m"]
+script = ExtResource("4_085uy")
+value = 1.0
+precision = 0
+scaling = 3
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
+[sub_resource type="Resource" id="Resource_mv84c"]
+script = ExtResource("4_085uy")
+value = 100.0
+scaling = 3
+custom_scaling_function = "x"
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [resource]
 script = ExtResource("2_085uy")
 name = "Player"
 model_name = "barbarian"
 model_type = "Medium"
-walk_speed = 5.0
-run_speed = 8.0
-turn_speed = 10.0
-walk_acceleration = 150.0
-walk_deceleration = 150.0
-run_acceleration = 150.0
-run_deceleration = 150.0
 primary_starting_weapon = ExtResource("1_nj1j0")
 secondary_starting_weapon = ExtResource("3_djg7l")
+stats = Dictionary[int, ExtResource("4_085uy")]({
+0: SubResource("Resource_085uy"),
+1: SubResource("Resource_djg7l"),
+2: SubResource("Resource_yy0ma"),
+3: SubResource("Resource_a0ojc"),
+4: SubResource("Resource_xqnh1"),
+5: SubResource("Resource_kf40b"),
+6: SubResource("Resource_ejtf2"),
+7: SubResource("Resource_e30pu"),
+8: SubResource("Resource_xqo2r"),
+9: SubResource("Resource_q334o"),
+10: SubResource("Resource_66eqq"),
+11: SubResource("Resource_yy0ty"),
+12: SubResource("Resource_yur5m"),
+13: SubResource("Resource_mv84c")
+})
 metadata/_custom_type_script = "uid://bhiw02y634v68"

@@ -9,7 +9,7 @@ func create_resource() -> Stats:
 	stats.stats.append(Stat.Builder.new().type(Stat.Type.WALK_SPEED).precision(0).value(0).build())
 	stats.stats.append(Stat.Builder.new().type(Stat.Type.RUN_SPEED).precision(0).value(0).build())
 	stats.stats.append(Stat.Builder.new().type(Stat.Type.TURN_SPEED).precision(0).value(0).build())
-	stats.stats.append(Stat.Builder.new().type(Stat.Type.).precision(0).value(0).build())
+	stats.stats.append(Stat.Builder.new().type(Stat.Type.WALK_ACCELERATION).precision(0).value(0).build())
 	stats.stats.append(Stat.Builder.new().type(Stat.Type.WALK_SPEED).precision(0).value(0).build())
 	stats.stats.append(Stat.Builder.new().type(Stat.Type.WALK_SPEED).precision(0).value(0).build())
 	stats.stats.append(Stat.Builder.new().type(Stat.Type.WALK_SPEED).precision(0).value(0).build())

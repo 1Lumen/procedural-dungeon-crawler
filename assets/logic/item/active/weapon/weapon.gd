@@ -14,6 +14,7 @@ enum Class { SWORD, AXE, DAGGER }
 
 @onready var combo_timer: Timer = %ComboTimer
 
+# TODO: Modify to support combo index in combo class.
 var combo_index: int = 0:
 	set(value):
 		if value == 0:
@@ -47,6 +48,9 @@ func init(user: Character) -> void:
 
 
 @abstract func use(character: Character) -> void
+
+
+@abstract func get_damage() -> int
 
 
 func load_model(model_name: String) -> PackedScene:

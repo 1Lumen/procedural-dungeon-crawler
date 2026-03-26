@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://tp4up0jwd24g" path="res://assets/logic/item/active/weapon/combo.gd" id="1_gq0b4"]
 [ext_resource type="Script" uid="uid://bcopnckhhpuqc" path="res://assets/logic/item/active/attack.gd" id="1_yspn1"]
 [ext_resource type="Script" uid="uid://cvmm7kgyq31s7" path="res://assets/logic/item/active/weapon/weapon_stats.gd" id="2_yspn1"]
+[ext_resource type="Script" uid="uid://dye5b8kxq07lb" path="res://addons/own/stats_system/stats/stat.gd" id="4_283d1"]
 
 [sub_resource type="Resource" id="Resource_283d1"]
 script = ExtResource("1_yspn1")

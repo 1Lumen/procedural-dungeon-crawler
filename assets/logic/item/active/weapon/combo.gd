@@ -7,3 +7,6 @@ extends Resource
 var length: int:
 	get:
 		return attacks.size()
+var index: int:
+	set(value):
+		index = clamp(value, 0, length - 1)
