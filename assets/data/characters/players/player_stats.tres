@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://3bpq8ne4o08r" path="res://assets/data/weapons/melee/swords/sword_basic.tres" id="1_nj1j0"]
 [ext_resource type="Script" uid="uid://bhiw02y634v68" path="res://assets/logic/character/character_stats.gd" id="2_085uy"]
 [ext_resource type="Resource" uid="uid://cebj3ttdm0r32" path="res://assets/data/weapons/ranged/bows/bow.tres" id="3_djg7l"]
-[ext_resource type="Script" uid="uid://dye5b8kxq07lb" path="res://addons/own/stats_system/stats/stat.gd" id="4_085uy"]
+[ext_resource type="Script" uid="uid://dye5b8kxq07lb" path="res://addons/stats_system/stats/stat.gd" id="4_085uy"]
 
 [sub_resource type="Resource" id="Resource_085uy"]
 script = ExtResource("4_085uy")

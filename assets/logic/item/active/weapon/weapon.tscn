@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c17kmpaemrxw"]
 
-[ext_resource type="Script" uid="uid://bx0j8pde1jl4x" path="res://addons/own/stats_system/components/stats_holder.gd" id="2_unuqp"]
+[ext_resource type="Script" uid="uid://bx0j8pde1jl4x" path="res://addons/stats_system/components/stats_holder.gd" id="2_unuqp"]
 
 [node name="Weapon" type="Node3D" unique_id=2104277733]
 
