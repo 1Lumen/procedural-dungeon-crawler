@@ -55,9 +55,9 @@ enum Scaling {
 var custom_function = Expression.new()
 
 
-func _init(builder: Builder) -> void:
-	precision = builder._precision
-	value = builder._value
+#func _init(builder: Builder) -> void:
+	#precision = builder._precision
+	#value = builder._value
 
 
 # BALANCE: Find right scaling functions.
@@ -88,20 +88,20 @@ func _get_custom_function_multiplier(power: int) -> float:
 	return result
 
 
-class Builder:
-	var _precision: int
-	var _value: float
-	
-	
-	func precision(precision: int) -> Builder:
-		_precision = precision
-		return self
-	
-	
-	func value(value: float) -> Builder:
-		_value = value
-		return self
-	
-	
-	func build() -> Stat:
-		return Stat.new(self)
+#class Builder:
+	#var _precision: int
+	#var _value: float
+	#
+	#
+	#func precision(precision: int) -> Builder:
+		#_precision = precision
+		#return self
+	#
+	#
+	#func value(value: float) -> Builder:
+		#_value = value
+		#return self
+	#
+	#
+	#func build() -> Stat:
+		#return Stat.new(self)

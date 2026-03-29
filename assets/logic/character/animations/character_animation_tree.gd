@@ -23,7 +23,7 @@ func _ready() -> void:
 func init(model: CharacterModel):
 	anim_player = model.animation_player.get_path()
 	animation_player = model.animation_player
-	character_model_type = character.stats.model_type.to_lower()
+	character_model_type = character.get_stats().model_type.to_lower()
 	set_idle_animation(null)
 
 

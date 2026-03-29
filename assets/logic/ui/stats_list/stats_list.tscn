@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://ccu8renog64vx"]
+
+[ext_resource type="Theme" uid="uid://dodqgad2iohc2" path="res://assets/visuals/themes/stats_display_theme.tres" id="1_hsggg"]
+[ext_resource type="Script" uid="uid://dvl7fhlnathou" path="res://assets/logic/ui/stats_list/stats_list.gd" id="2_dbcae"]
+[ext_resource type="Texture2D" uid="uid://bmplfmjvjjod1" path="res://assets/visuals/sprites/arrow.png" id="3_dbcae"]
+
+[node name="StatsList" type="VBoxContainer" unique_id=1263357697]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hsggg")
+script = ExtResource("2_dbcae")
+metadata/_custom_type_script = "uid://dvl7fhlnathou"
+
+[node name="Header" type="HBoxContainer" parent="." unique_id=1572018357]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Header" unique_id=1411138382]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="QualityIcon" type="TextureRect" parent="Header/MarginContainer" unique_id=439054042]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_dbcae")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Power" type="Label" parent="Header" unique_id=386634204]
+unique_name_in_owner = true
+layout_mode = 2
+text = "168"
+
+[node name="Name" type="Label" parent="Header" unique_id=1448471892]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sword"
+horizontal_alignment = 1
+
+[node name="StatDisplays" type="MarginContainer" parent="." unique_id=733860945]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatDisplays" unique_id=1512613071]
+layout_mode = 2

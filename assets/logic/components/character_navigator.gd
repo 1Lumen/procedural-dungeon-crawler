@@ -36,10 +36,10 @@ func set_navigation_position(global_position: Vector3) -> void:
 func set_stats(stats: Stats) -> void:
 	if not stats:
 		return
-	speed = stats.run_speed * stats.speed * 0.01
-	acceleration = stats.run_acceleration
-	deceleration = stats.run_deceleration
-	rotation_speed = stats.turn_speed
+	speed = stats.get_stat(Stat.Type.RUN_SPEED) * stats.get_stat(Stat.Type.SPEED) * 0.01
+	acceleration = stats.get_stat(Stat.Type.RUN_ACCELERATION)
+	deceleration = stats.get_stat(Stat.Type.RUN_DECELERATION)
+	rotation_speed = stats.get_stat(Stat.Type.TURN_SPEED)
 
 
 func stop() -> void:

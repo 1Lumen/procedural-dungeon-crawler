@@ -7,11 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://b14qlo73yijiw" path="res://assets/logic/character/player/cursor/cursor.tscn" id="5_y62k1"]
 
 [node name="Player" unique_id=2006541942 groups=["Player"] instance=ExtResource("1_j2pfq")]
-stats = ExtResource("2_gyegr")
 
 [node name="CharacterAnimationTree" parent="." index="2" unique_id=2107848243]
 parameters/Alive/Action/Move/move_animation/0/Transition/current_state = "idle"
 parameters/Alive/Action/Move/move_animation/0/Transition/current_index = 0
+
+[node name="StatsHolder" parent="." index="4" unique_id=463675361]
+base_stats = ExtResource("2_gyegr")
 
 [node name="PlayerInput" type="Node" parent="." index="5" unique_id=771072922]
 script = ExtResource("3_bq6hj")

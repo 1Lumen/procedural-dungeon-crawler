@@ -15,7 +15,7 @@ func use(character: Character) -> void:
 	refresh_hit()
 	
 	# TODO: Cache.
-	var library_name := "character_%s_%s_animations" % [character.stats.model_type.to_lower(), TYPE]
+	var library_name := "character_%s_%s_animations" % [character.get_stats().model_type.to_lower(), TYPE]
 	var animation = library_name + "/" + animation_name
 	character.model.animation_player.play(animation)
 	await character.model.animation_player.animation_finished

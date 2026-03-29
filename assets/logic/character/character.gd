@@ -4,9 +4,9 @@ extends CharacterBody3D
 ##
 ## Loads in the model.
 
-## Referece to the stats resource stored in the StatsHolder component.
-@export var stats: CharacterStats
+@export var initial_stats: CharacterStats
 
+@onready var stats_holder: StatsHolder = %StatsHolder
 @onready var character_animation_tree: CharacterAnimationTree = %CharacterAnimationTree
 @onready var primary_attack_range: CylinderShape3D = %PrimaryAttackRange.get_child(0).shape
 @onready var secondary_attack_range: CylinderShape3D = %SecondaryAttackRange.get_child(0).shape
@@ -26,39 +26,40 @@ var equipped_weapon: Weapon
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Sets up stats in stats holder component.
-	await get_tree().process_frame
-	%StatsHolder.stats = stats
-	stats = %StatsHolder.stats as CharacterStats
+	if initial_stats:
+		stats_holder.stats = initial_stats
 	
-	load_model(stats.model_name)
+	load_model(get_stats().model_name)
 	character_animation_tree.init(model)
 	give_starting_gear()
 
 
 ## Equips the character with their starting gear.
 func give_starting_gear() -> void:
-	if stats.primary_starting_weapon and not primary_weapon:
-		equip_weapon(stats.primary_starting_weapon, true)
-	if stats.secondary_starting_weapon and not secondary_weapon:
-		equip_weapon(stats.secondary_starting_weapon, false)
-	if stats.starting_armor and not armor:
-		equip_armor(stats.starting_armor)
+	if get_stats().primary_starting_weapon and not primary_weapon:
+		equip_weapon(get_stats().primary_starting_weapon, true)
+	if get_stats().secondary_starting_weapon and not secondary_weapon:
+		equip_weapon(get_stats().secondary_starting_weapon, false)
+	if get_stats().starting_armor and not armor:
+		equip_armor(get_stats().starting_armor)
 	character_animation_tree.save_tree()
 
 
+# TODO: Add function to remove weapon scene from tree when unequipping.
+# TODO: Figure out how to name functions for equipping primary/secondary and equipping a weapon.
 func equip_weapon(weapon_stats: WeaponStats, primary: bool = true):
 	var weapon_scene = Weapon.get_weapon_scene(weapon_stats)
 	var weapon = weapon_scene.instantiate() as Weapon
-	weapon.stats = weapon_stats
+	
+	model.right_hand.add_child(weapon)
+	weapon.stats_holder.stats = weapon_stats
+	
 	if primary:
 		primary_weapon = weapon
-		model.right_hand.add_child(weapon)
 		character_animation_tree.set_primary_weapon(weapon_stats)
 		primary_attack_range.radius = weapon_stats.range
 	else:
 		secondary_weapon = weapon
-		model.left_hand.add_child(weapon)
 		character_animation_tree.set_secondary_weapon(weapon_stats)
 		secondary_attack_range.radius = weapon_stats.range
 		secondary_weapon.hide()
@@ -73,10 +74,14 @@ func equip_armor(armor_stats: ArmorStats):
 
 func load_model(model_name: String) -> void:
 	var model_scene = Preloads.Models.characters.get(model_name)
-	assert(model_scene, "No valid model %s found for character %s" % [model_name, stats.name])
+	assert(model_scene, "No valid model %s found for character %s" % [model_name, get_stats().name])
 	
 	if model: # Delete the old model.
 		model.queue_free()
 	
 	model = model_scene.instantiate()
 	add_child(model)
+
+
+func get_stats() -> CharacterStats:
+	return stats_holder.stats as CharacterStats

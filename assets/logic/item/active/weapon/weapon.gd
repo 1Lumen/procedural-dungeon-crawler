@@ -23,7 +23,7 @@ var combo_index: int = 0:
 			# TODO: Might need to make it more precise instead of on combo index increase.
 			combo_started.emit()
 		combo_index = max(0, value)
-		if value >= get_stats().combo.length:
+		if value >= stats_holder.stats.combo.length:
 			combo_index = 0
 var collision_layer: int
 var collision_mask: int
@@ -35,8 +35,7 @@ static func get_weapon_scene(weapon_stats: WeaponStats) -> PackedScene:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await get_tree().process_frame
-	stats = (%StatsHolder.stats as WeaponStats)
+	super._ready()
 	
 	combo_timer.timeout.connect(reset_combo)
 	attack_started.connect(combo_timer.stop)
@@ -50,17 +49,18 @@ func init(user: Character) -> void:
 @abstract func use(character: Character) -> void
 
 
-@abstract func get_damage() -> int
+func get_damage() -> int:
+	return int(stats_holder.get_stat(Stat.Type.DAMAGE))
 
 
 func load_model(model_name: String) -> PackedScene:
 	return Preloads.Models.weapons[model_name]
 
 
-func get_stats() -> WeaponStats:
-	return stats as WeaponStats
-
-
 func reset_combo() -> void:
 	print("Combo reset")
 	combo_index = 0
+
+
+func get_stats() -> WeaponStats:
+	return stats_holder.stats as WeaponStats

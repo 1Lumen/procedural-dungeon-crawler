@@ -13,4 +13,4 @@ func get_stat(type: Stat.Type) -> float:
 	if not stat:
 		push_warning("No stat of type %s found on %s" % [str(type), resource_name])
 		return 0
-	return stat * stat.get_power_multiplier(power)
+	return stat.value * stat.get_power_multiplier(power)

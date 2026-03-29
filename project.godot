@@ -48,7 +48,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/hfsm/plugin.cfg", "res://addons/own/hfsm/plugin.cfg", "res://addons/own/stats_system/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/stats_system/plugin.cfg", "res://addons/third_party/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/hfsm/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/stats_system/plugin.cfg")
 
 [global_group]
 

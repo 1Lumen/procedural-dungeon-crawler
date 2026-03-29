@@ -13,4 +13,4 @@ func load_model(model_name: String) -> PackedScene:
 
 
 func get_stats() -> ArmorStats:
-	return stats as ArmorStats
+	return stats_holder.stats as ArmorStats

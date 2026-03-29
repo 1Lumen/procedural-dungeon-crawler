@@ -28,10 +28,20 @@ script = ExtResource("1_gq0b4")
 attacks = Array[ExtResource("1_yspn1")]([SubResource("Resource_283d1"), SubResource("Resource_828i4"), SubResource("Resource_3natl")])
 metadata/_custom_type_script = "uid://tp4up0jwd24g"
 
+[sub_resource type="Resource" id="Resource_yhlte"]
+script = ExtResource("4_283d1")
+value = 1.0
+precision = 0
+scaling = 3
+metadata/_custom_type_script = "uid://dye5b8kxq07lb"
+
 [resource]
 script = ExtResource("2_yspn1")
 combo = SubResource("Resource_yspn1")
 name = "Adventurer's Sword"
 model_name = "sword_basic"
 scene_name = "sword"
+stats = Dictionary[int, ExtResource("4_283d1")]({
+7: SubResource("Resource_yhlte")
+})
 metadata/_custom_type_script = "uid://cvmm7kgyq31s7"

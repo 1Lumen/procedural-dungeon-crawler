@@ -7,7 +7,8 @@ signal stats_changed(stats: Stats)
 
 var stats: Stats:
 	set(value):
-		stats = value.duplicate_deep()
+		if value:
+			stats = value.duplicate_deep()
 		stats_changed.emit(stats)
 var stat_buffs: Array[StatBuff]
 
@@ -16,8 +17,10 @@ var stat_buffs: Array[StatBuff]
 ## This is done to keep the base stats of e.g. an enemy type but to allow modifications
 ## to an instance of that enemy.
 func _ready() -> void:
+	stats_changed.connect(print.bind("stats changed"))
 	if base_stats and not stats:
 		stats = base_stats
+	stats_changed.emit(stats)
 
 
 func get_stat(type: Stat.Type) -> float:

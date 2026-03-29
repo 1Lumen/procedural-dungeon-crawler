@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://311vitb7126n"]
+
+[ext_resource type="Script" uid="uid://d20xwfmuhvutu" path="res://assets/logic/ui/stats_list/stat_display.gd" id="1_h78t3"]
+[ext_resource type="Theme" uid="uid://dodqgad2iohc2" path="res://assets/visuals/themes/stats_display_theme.tres" id="1_s8u66"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptv71"]
+bg_color = Color(0.9999998, 0.005062296, 0.24379888, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hsggg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbcae"]
+bg_color = Color(0.24984646, 0.99999994, 0.2752744, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h51ck"]
+
+[node name="StatDisplay" type="VBoxContainer" unique_id=432385222]
+size_flags_horizontal = 3
+theme = ExtResource("1_s8u66")
+script = ExtResource("1_h78t3")
+stat_type = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1692667741]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="HBoxContainer" unique_id=304576979]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HEALING MULTIPLIER"
+uppercase = true
+
+[node name="Value" type="Label" parent="HBoxContainer" unique_id=140614278]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Control" type="Control" parent="." unique_id=353184810]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="LessBar" type="ProgressBar" parent="Control" unique_id=550931433]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_ptv71")
+show_percentage = false
+
+[node name="MoreBar" type="ProgressBar" parent="Control" unique_id=355680678]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxEmpty_hsggg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dbcae")
+show_percentage = false
+
+[node name="ValueBar" type="ProgressBar" parent="Control" unique_id=223336974]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxEmpty_h51ck")
+show_percentage = false

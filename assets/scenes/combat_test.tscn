@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bfj7lu6tc473s"]
 
 [ext_resource type="Script" uid="uid://cfhoefn20qwf4" path="res://assets/logic/character/player/cursor/marker.gd" id="2_gyf67"]
+[ext_resource type="Resource" uid="uid://c8j5nk2tuqt15" path="res://assets/data/characters/players/player_stats.tres" id="3_3hi7r"]
 [ext_resource type="PackedScene" uid="uid://l1as1haan628" path="res://assets/logic/character/player/player.tscn" id="3_vsww7"]
 [ext_resource type="PackedScene" uid="uid://d4l5nf0d4rbsd" path="res://assets/logic/character/enemy/enemy.tscn" id="4_3hi7r"]
 [ext_resource type="Resource" uid="uid://bl0n2l5vgmaww" path="res://assets/data/characters/enemies/skeleton_warrior.tres" id="5_tlgk6"]
@@ -72,7 +73,8 @@ shape = SubResource("WorldBoundaryShape3D_ir0yo")
 mesh = SubResource("PlaneMesh_xaxto")
 
 [node name="Player" parent="." unique_id=482223014 instance=ExtResource("3_vsww7")]
+initial_stats = ExtResource("3_3hi7r")
 
 [node name="Enemy" parent="." unique_id=746901630 instance=ExtResource("4_3hi7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.480578, -1.9073486e-06, -1.5434875)
-stats = ExtResource("5_tlgk6")
+initial_stats = ExtResource("5_tlgk6")

@@ -7,69 +7,81 @@
 
 [sub_resource type="Resource" id="Resource_085uy"]
 script = ExtResource("4_085uy")
-value = 10.0
+value = 5.0
 precision = 0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_djg7l"]
 script = ExtResource("4_085uy")
-value = 15.0
+value = 8.0
 precision = 0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_yy0ma"]
 script = ExtResource("4_085uy")
 value = 10.0
 precision = 0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_a0ojc"]
 script = ExtResource("4_085uy")
 value = 50.0
 precision = 0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_xqnh1"]
 script = ExtResource("4_085uy")
 value = 50.0
 precision = 0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_kf40b"]
 script = ExtResource("4_085uy")
 value = 75.0
 precision = 0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_ejtf2"]
 script = ExtResource("4_085uy")
 value = 75.0
 precision = 0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_e30pu"]
 script = ExtResource("4_085uy")
 value = 0.3
 precision = 0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_xqo2r"]
 script = ExtResource("4_085uy")
 value = 1.0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_q334o"]
 script = ExtResource("4_085uy")
 value = 100.0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_66eqq"]
 script = ExtResource("4_085uy")
 value = 100.0
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_yy0ty"]
 script = ExtResource("4_085uy")
+scaling = 3
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [sub_resource type="Resource" id="Resource_yur5m"]
@@ -83,7 +95,6 @@ metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 script = ExtResource("4_085uy")
 value = 100.0
 scaling = 3
-custom_scaling_function = "x"
 metadata/_custom_type_script = "uid://dye5b8kxq07lb"
 
 [resource]

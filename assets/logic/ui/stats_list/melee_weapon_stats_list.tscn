@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://du2vxv8c0bkp6"]
+
+[ext_resource type="PackedScene" uid="uid://ccu8renog64vx" path="res://assets/logic/ui/stats_list/stats_list.tscn" id="1_1m7lm"]
+[ext_resource type="PackedScene" uid="uid://311vitb7126n" path="res://assets/logic/ui/stats_list/stat_display.tscn" id="2_ddb2d"]
+
+[node name="MeleeWeaponStatsList" unique_id=1263357697 instance=ExtResource("1_1m7lm")]
+
+[node name="Damage" parent="StatDisplays/VBoxContainer" parent_id_path=PackedInt32Array(1512613071) index="0" unique_id=432385222 instance=ExtResource("2_ddb2d")]
+layout_mode = 2
+stat_type = 15
+
+[node name="AttackSpeed" parent="StatDisplays/VBoxContainer" parent_id_path=PackedInt32Array(1512613071) index="1" unique_id=861153987 instance=ExtResource("2_ddb2d")]
+layout_mode = 2
+stat_type = 7
+
+[node name="Range" parent="StatDisplays/VBoxContainer" parent_id_path=PackedInt32Array(1512613071) index="2" unique_id=1232635177 instance=ExtResource("2_ddb2d")]
+layout_mode = 2
+stat_type = 14
